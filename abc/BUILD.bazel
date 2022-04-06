@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "abc",
+    srcs = ["abc.go"],
+    importpath = "example.com/abc",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//a/abc",
+    ],
+)
+
+go_test(
+    name = "abc_test",
+    srcs = ["abc_test.go"],
+    embed = [":abc"],
+    deps = [],
+)
